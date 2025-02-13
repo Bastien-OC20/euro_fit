@@ -1,6 +1,6 @@
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Date, DECIMAL, Enum, Text, CheckConstraint
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Date, DECIMAL, Enum, Text, CheckConstraint, DateTime
 from sqlalchemy.orm import relationship, declarative_base, sessionmaker
-from datetime import datetime, date
+# from datetime import datetime, date
 
 Base = declarative_base()
 
