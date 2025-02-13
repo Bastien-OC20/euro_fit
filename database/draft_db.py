@@ -454,4 +454,5 @@ def init_db():
 
 if __name__ == "__main__":
     session = init_db()
-    #session.close(
+    #session.close()
+
