@@ -1,6 +1,6 @@
 from faker import Faker
 from sqlalchemy.orm import sessionmaker
-from create_db import Base, Coach, Abonnement, Medecin, Transaction, Salle, Machine, Membre, Capteur, Pays, Ville, Activite, Equipement, AnalyseCorporelle, CodePostal, Adresse, Assurance, Club, AgentSecurite, AgentNettoyage, UtilisationMachine, Paiement, Specialisation, Pratique, SalleActivite, ClubSalle, Souscrit, init_db
+from database.create_db import Base, Coach, Abonnement, Medecin, Transaction, Salle, Machine, Membre, Capteur, Pays, Ville, Activite, Equipement, AnalyseCorporelle, CodePostal, Adresse, Assurance, Club, AgentSecurite, AgentNettoyage, UtilisationMachine, Paiement, Specialisation, Pratique, SalleActivite, ClubSalle, Souscrit, init_db
 from sqlalchemy import create_engine
 import random
 from datetime import datetime, timedelta
