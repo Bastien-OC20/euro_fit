@@ -10,7 +10,8 @@ from .crud import (
     get_membre, create_membre, update_membre, delete_membre, get_all
 )
 from .models import Coach, Membre
-from .database import SessionLocal  # Remplacer l'import de init_db par SessionLocal
+from .database import SessionLocal
+from .schemas import CoachCreate, CoachUpdate, CoachOut, MembreCreate, MembreUpdate, MembreOut
 
 app = FastAPI(title="Euro Fit API", version="1.0")
 
@@ -22,60 +23,11 @@ def get_db():
     finally:
         db.close()
 
-# Schémas Pydantic pour Coach
-class CoachCreate(BaseModel):
-    nom: str
-    prenom: str
-    email: str
+# Endpoints pour la racine
+@app.get("/")  # GET /
+def read_root():
+    return {"message": "Bienvenue sur l'API Euro Fit"}
 
-class CoachUpdate(BaseModel):
-    nom: Optional[str] = None
-    prenom: Optional[str] = None
-    email: Optional[str] = None
-
-class CoachOut(BaseModel):
-    id_coach: int
-    nom: str
-    prenom: str
-    email: str
-
-    class Config:
-        orm_mode = True
-
-# Schémas Pydantic pour Membre
-class MembreCreate(BaseModel):
-    nom: str
-    prenom: str
-    date_naissance: datetime.date
-    email: str
-    telephone: str
-    numero_licence: str
-    id_medecin: int
-    id_coach: int
-
-class MembreUpdate(BaseModel):
-    nom: Optional[str] = None
-    prenom: Optional[str] = None
-    date_naissance: Optional[datetime.date] = None
-    email: Optional[str] = None
-    telephone: Optional[str] = None
-    numero_licence: Optional[str] = None
-    id_medecin: Optional[int] = None
-    id_coach: Optional[int] = None
-
-class MembreOut(BaseModel):
-    id_membre: int
-    nom: str
-    prenom: str
-    date_naissance: datetime.date
-    email: str
-    telephone: str
-    numero_licence: str
-    id_medecin: int
-    id_coach: int
-
-    class Config:
-        orm_mode = True
 
 # Endpoints pour Coach
 @app.get("/coaches/", response_model=List[CoachOut])
