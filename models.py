@@ -379,11 +379,3 @@ class Souscrit(Base):
     club = relationship("Club", back_populates="souscriptions")
 
 
-# ------------------------------
-# Database Configuration & Creation
-# ------------------------------
-DATABASE_URL = "mysql+pymysql://user:password@localhost/euro_fit"  # Update with your credentials
-engine = create_engine(DATABASE_URL, echo=True)
-Base.metadata.create_all(engine)
-
-print("Base de données créée avec succès !")
